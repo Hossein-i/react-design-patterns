@@ -1,3 +1,5 @@
+import { useState } from "react";
+import Model from "./components/Model";
 import NumberedList from "./components/NumberedList";
 import ProductInfo from "./components/ProductInfo";
 import RegularList from "./components/RegularList";
@@ -59,6 +61,8 @@ const products = [
 ];
 
 function App() {
+  const [show, setShow] = useState(false);
+
   return (
     <>
       <SplitScreen leftWeight={1} rightWeight={3}>
@@ -71,6 +75,8 @@ function App() {
         resourceName="product"
         itemComponent={ProductInfo}
       />
+      <button onClick={() => setShow(true)}>Open Model</button>
+      <Model show={show} onClose={() => setShow(false)} />
     </>
   );
 }
